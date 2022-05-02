@@ -99,9 +99,6 @@ They can be executed running `python tests/integration/test_gsheet_loader.py`.
 ## Meltano configuration:
 
 ```yaml
-  - name: tap-google-sheets
-    variant: singer-io
-    pip_url: git+https://github.com/singer-io/tap-google-sheets.git
   - name: tap-gsheets
     namespace: tap_gsheets
     pip_url: git+https://github.com/Atif8Ted/tap-gsheets.git
