@@ -49,6 +49,7 @@ def sync(config):
             LOGGER.error(
                 f"Can't process a worksheet {spreadsheet_id} because of:\n{e}",
             )
+            raise Exception(f"Can't process a worksheet {spreadsheet_id} because of:\n{e}")
 
 
 def process_worksheet(gsheets_loader, sheet_name, worksheet, config):
