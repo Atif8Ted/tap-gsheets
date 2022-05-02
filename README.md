@@ -96,3 +96,24 @@ $ pip install -e .
 # Integration Tests
 The [integration tests spec](tests/integration/test_gsheet_loader.py) tests the project against a [sample Google sheet](https://docs.google.com/a/pagantis.com/spreadsheets/d/e/2PACX-1vRcyNFmNV4EXv_J7CyiIWjQOirwrZCXKQ5DKDMfr-lxV2iqgHMWdX14EKFXyS_tZZ4Xyn9jlpmZagzY/pubhtml).
 They can be executed running `python tests/integration/test_gsheet_loader.py`.
+## Meltano configuration:
+
+```yaml
+  - name: tap-google-sheets
+    variant: singer-io
+    pip_url: git+https://github.com/singer-io/tap-google-sheets.git
+  - name: tap-gsheets
+    namespace: tap_gsheets
+    pip_url: git+https://github.com/Atif8Ted/tap-gsheets.git
+    executable: tap-gsheets
+    config:
+      client_id: 
+      refresh_token: 
+      client_secret: 
+      underscore_columns: True/False
+      singular_table_name: True/False
+      spreadsheets:
+        - spreadsheet_id: <spreadsheet_id>
+          sheets: [<Llist of sheets>]
+
+```
