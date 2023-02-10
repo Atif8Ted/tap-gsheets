@@ -56,13 +56,16 @@ def process_worksheet(gsheets_loader, sheet_name, worksheet, config):
     LOGGER.info("Processing worksheet: %s %s", sheet_name, worksheet)
     # if type(sheet_name) is dict:
     #     sheet_name = sheet_name.values()[0]
-    if type(worksheet) is dict:
-        LOGGER.info("Worksheet is a dict: %s", worksheet)
-        worksheet = worksheet.values()[0]
     if worksheet is None:
         name_with_worksheet = sheet_name
     else:
-        name_with_worksheet = worksheet
+        if type(worksheet) is str:
+            name_with_worksheet = worksheet
+        else:
+            name_with_worksheet = worksheet.values()[0]
+
+
+
 
     if "singular_table_name" in config and config["singular_table_name"]:
         stream_name = underscore(parameterize(name_with_worksheet))
