@@ -53,15 +53,28 @@ def sync(config):
 
 
 def process_worksheet(gsheets_loader, sheet_name, worksheet, config):
+    # if type(sheet_name) is dict:
+    #     sheet_name = sheet_name.values()[0]
     if worksheet is None:
         name_with_worksheet = sheet_name
     else:
-        name_with_worksheet = worksheet
+        if type(worksheet) is str:
+            name_with_worksheet = worksheet
+        elif type(dict(worksheet)) is dict:
+            name_with_worksheet = list(dict(worksheet).values())[0]
+
+
+
 
     if "singular_table_name" in config and config["singular_table_name"]:
         stream_name = underscore(parameterize(name_with_worksheet))
     else:
         stream_name = tableize(parameterize(name_with_worksheet))
+
+    if type(worksheet) is str:
+        worksheet = worksheet
+    elif type(dict(worksheet)) is dict:
+        worksheet = list(dict(worksheet).keys())[0]
 
     schema = gsheets_loader.get_schema(sheet_name, worksheet)
     records = gsheets_loader.get_data(sheet_name, worksheet)
@@ -84,6 +97,7 @@ def process_worksheet(gsheets_loader, sheet_name, worksheet, config):
 
     # write stuff
     singer.write_schema(stream_name=stream_name, schema=schema, key_properties=["id"])
+
 
     for record in records:
         if column_mapping is not None:
