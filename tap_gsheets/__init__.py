@@ -83,7 +83,9 @@ def process_worksheet(gsheets_loader, sheet_name, worksheet, config):
         record["id"] = i
 
     # write stuff
-    singer.write_schema(stream_name=stream_name, schema=schema, key_properties=["id"])
+    # singer.write_schema(stream_name=stream_name, schema=schema, key_properties=["id"])
+    singer.write_schema(stream_name=stream_name, schema=schema)
+
 
     for record in records:
         if column_mapping is not None:
