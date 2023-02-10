@@ -62,8 +62,7 @@ def process_worksheet(gsheets_loader, sheet_name, worksheet, config):
         if type(worksheet) is str:
             name_with_worksheet = worksheet
         elif type(dict(worksheet)) is dict:
-            LOGGER.info("worksheet is dict: %s", dict(worksheet))
-            name_with_worksheet = dict(worksheet).values()[0]
+            name_with_worksheet = list(dict(worksheet).values())[0]
 
 
 
