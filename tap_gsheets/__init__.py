@@ -53,7 +53,7 @@ def sync(config):
 
 
 def process_worksheet(gsheets_loader, sheet_name, worksheet, config):
-    LOGGER.info("Processing worksheet:", sheet_name, worksheet)
+    LOGGER.info("Processing worksheet: %s %s", sheet_name, worksheet)
     # if type(sheet_name) is dict:
     #     sheet_name = sheet_name.values()[0]
     if worksheet is None:
