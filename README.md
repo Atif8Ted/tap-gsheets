@@ -1,5 +1,5 @@
 # tap-gsheets
-A meltano tap for ingest data from Google Sheets
+A meltano tap to ingest data from Google Sheets
 ## Meltano configuration:
 
 ```yaml
