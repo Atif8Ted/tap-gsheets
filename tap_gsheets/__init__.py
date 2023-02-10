@@ -61,8 +61,8 @@ def process_worksheet(gsheets_loader, sheet_name, worksheet, config):
     else:
         if type(worksheet) is str:
             name_with_worksheet = worksheet
-        else:
-            name_with_worksheet = worksheet.values()[0]
+        elif type(dict(worksheet)) is dict:
+            name_with_worksheet = dict(worksheet).values()[0]
 
 
 
