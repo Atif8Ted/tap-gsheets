@@ -71,12 +71,12 @@ def process_worksheet(gsheets_loader, sheet_name, worksheet, config):
         stream_name = underscore(parameterize(name_with_worksheet))
     else:
         stream_name = tableize(parameterize(name_with_worksheet))
+
     if type(worksheet) is str:
         worksheet = worksheet
     elif type(dict(worksheet)) is dict:
         worksheet = list(dict(worksheet).keys())[0]
-    else:
-        worksheet = None
+
     schema = gsheets_loader.get_schema(sheet_name, worksheet)
     records = gsheets_loader.get_data(sheet_name, worksheet)
 
