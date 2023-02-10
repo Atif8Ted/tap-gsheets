@@ -108,7 +108,6 @@ def process_worksheet(gsheets_loader, sheet_name, worksheet, config):
         singer.write_record(stream_name, record_transformed)
 
 
-
 def main():
     # parse arguments. get config file path.
     parser = argparse.ArgumentParser()
