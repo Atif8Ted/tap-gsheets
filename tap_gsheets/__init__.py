@@ -53,6 +53,8 @@ def sync(config):
 
 
 def process_worksheet(gsheets_loader, sheet_name, worksheet, config):
+    if type(sheet_name) is dict:
+        sheet_name = sheet_name.values()[0]
     if worksheet is None:
         name_with_worksheet = sheet_name
     else:
@@ -83,8 +85,7 @@ def process_worksheet(gsheets_loader, sheet_name, worksheet, config):
         record["id"] = i
 
     # write stuff
-    # singer.write_schema(stream_name=stream_name, schema=schema, key_properties=["id"])
-    singer.write_schema(stream_name=stream_name, schema=schema,key_properties=[])
+    singer.write_schema(stream_name=stream_name, schema=schema, key_properties=["id"])
 
 
     for record in records:
