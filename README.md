@@ -1,5 +1,5 @@
 # tap-gsheets
-A meltano tap for ingest data from Google Sheets
+A meltano tap to ingest data from Google Sheets
 ## Meltano configuration:
 
 ```yaml
@@ -31,3 +31,5 @@ A meltano tap for ingest data from Google Sheets
     * ex: [sheet1,sheet2] will ingest the sheets as sheet1 and sheet2
    2. If it is a list of dictionaries, it will ingest the sheets with the name as the key and the value as the final table name
    * ex: [{'sheet1':'final_table1'},{'sheet2':'final_table2'}] will ingest the sheets as final_table1 and final_table2
+
+>> Note: Feel free to raise an issue if you find any bugs or have any suggestions
